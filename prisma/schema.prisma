@@ -12,12 +12,49 @@ datasource db {
   provider = "postgresql"
 }
 
+ 
+ 
+
+ enum Role {
+  ADMIN
+  BASIC
+}
+
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
+  id        String   @id @default(uuid())
+  username     String   @unique
   password  String
   name      String?
+  role      Role     @default(BASIC)
+
+  posts     Post[]    
+  comments  Comment[]
+
   createdAt DateTime @default(now())
- 
 }
- 
+
+model Post {
+  id        String   @id @default(uuid())
+  title     String
+  content   String
+
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id])
+
+  comments  Comment[]
+
+  createdAt DateTime @default(now())
+}
+
+model Comment {
+  id        String   @id @default(uuid())
+  content   String
+
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id])
+
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id])
+
+  createdAt DateTime @default(now())
+}
