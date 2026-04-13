@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
  import bcrypt from 'bcryptjs';
 
 export const register = async (req, res) => {
-  const { username, password, name } = req.body;
+  const { username, password, name, role} = req.body;
 
   if (!username || !password) {
     return res.status(400).json({ error: 'Username and password are required' });
@@ -18,13 +18,14 @@ export const register = async (req, res) => {
       data: {
         username,
         password: hashedPassword,
-        name: name || username
+        name: name || username,
+        role: role || null
       }
     });
 
     res.status(201).json({ 
       message: 'User registered successfully',
-      userId: user.id 
+      username: user.username 
     });
   } catch (err) {
     if (err.code === 'P2002') {
