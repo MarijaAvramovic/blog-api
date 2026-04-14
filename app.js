@@ -1,5 +1,5 @@
 import express from 'express';
-
+import passport from './config/passport.js';
  import { prisma } from "./lib/prisma.js";
 import dotenv from 'dotenv';
  
@@ -13,7 +13,7 @@ const app = express();
  
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(passport.initialize());
  
 
  

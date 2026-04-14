@@ -19,7 +19,7 @@ export const register = async (req, res) => {
         username,
         password: hashedPassword,
         name: name || username,
-        role: role || null
+         
       }
     });
 
@@ -35,3 +35,33 @@ export const register = async (req, res) => {
   }
 };
  
+
+// Login using Passport Local Strategy + issue JWT
+export const login = (req, res, next) => {
+  passport.authenticate('local', { session: false }, (err, user, info) => {
+    if (err) return next(err);
+    if (!user) {
+      return res.status(401).json({ error: info?.message || 'Login failed' });
+    }
+
+    // Create JWT token
+    const token = jwt.sign(
+      { 
+        userId: user.id, 
+        username: user.username 
+      },
+      process.env.JWT_SECRET || 'super-secret-change-this',
+      { expiresIn: '7d' }
+    );
+
+    res.json({
+      message: 'Login successful',
+      token,
+      user: {
+        id: user.id,
+        username: user.username,
+        name: user.name
+      }
+    });
+  })(req, res, next);
+};
