@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
  
 import authRouter from './routes/auth.js';
 import postsRouter from './routes/posts.js';
+import commentsRouter from './routes/comments.js';
 
 dotenv.config();
  
@@ -30,6 +31,7 @@ app.get('/', async (req, res) => {
 
 app.use('/api/auth', authRouter);
 app.use('/api/posts', postsRouter);
+app.use('/api', commentsRouter);
  
 
 const PORT = 4100;
