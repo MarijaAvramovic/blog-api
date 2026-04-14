@@ -65,3 +65,16 @@ export const login = (req, res, next) => {
     });
   })(req, res, next);
 };
+
+
+export const getProfile = async (req, res) => {
+  try {
+    
+    res.json({
+      message: '✅ Protected route accessed successfully',
+      user: req.user
+    });
+  } catch (err) {
+    res.status(500).json({ error: 'Something went wrong' });
+  }
+};
