@@ -78,3 +78,18 @@ export const getProfile = async (req, res) => {
     res.status(500).json({ error: 'Something went wrong' });
   }
 };
+
+export const logout = (req, res) => {
+  // Optional: If you want to use Passport's logout (harmless here)
+  req.logout((err) => {
+    if (err) {
+      console.error('Logout error:', err);
+    }
+  });
+
+  // For JWT, we can't invalidate the token on server (unless you add blacklisting later)
+  res.json({
+    message: 'Logged out successfully. Please remove the token from client storage.',
+    success: true
+  });
+};
