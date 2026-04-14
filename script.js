@@ -34,7 +34,7 @@ async function main() {
     data: {
       title: "My First Blog Post2 - Getting Started with Prisma",
       content: "Hello everyone! This is my first post using Prisma and Express. Building a blog with user authentication and comments is actually quite straightforward once you get the relations right.\n\nWhat do you think about this setup?",
-      published: true,
+      published: false,
       authorId: lola.id,
     }
   });

@@ -60,7 +60,8 @@ export const login = (req, res, next) => {
       user: {
         id: user.id,
         username: user.username,
-        name: user.name
+        name: user.name,
+        role: user.role
       }
     });
   })(req, res, next);

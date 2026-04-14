@@ -23,7 +23,7 @@ export const authenticateJWT = async (req, res, next) => {
         id: true,
         username: true,
         name: true,
-         
+        role: true
       }
     });
 
