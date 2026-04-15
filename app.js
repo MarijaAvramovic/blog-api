@@ -2,7 +2,7 @@ import express from 'express';
 import passport from './config/passport.js';
  import { prisma } from "./lib/prisma.js";
 import dotenv from 'dotenv';
- 
+ import cors from 'cors';
  
 import authRouter from './routes/auth.js';
 import postsRouter from './routes/posts.js';
@@ -11,6 +11,12 @@ import commentsRouter from './routes/comments.js';
 dotenv.config();
  
 const app = express();
+
+app.use(cors({
+  origin: '*',    
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
  
 app.use(express.json());

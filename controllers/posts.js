@@ -237,7 +237,7 @@ export const updatePost = async (req, res) => {
 export const deletePost = async (req, res) => {
   try {
     const { id } = req.params;
-
+await prisma.comment.deleteMany({ where: { postId: id } });
     await prisma.post.delete({
       where: { id }
     });

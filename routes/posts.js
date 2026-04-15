@@ -7,12 +7,13 @@ const router = Router();
 
  
 router.get('/', getAllPosts);
+router.get('/admin', authenticateJWT, isAdmin, getAllPostsAdmin);
 router.get('/:id', getPostById);
 
 router.post('/', authenticateJWT, isAdmin, createPost);
 router.put('/:id', authenticateJWT, isAdmin, updatePost);         
 router.delete('/:id', authenticateJWT, isAdmin, deletePost);
 
-router.get('/admin', authenticateJWT, isAdmin, getAllPostsAdmin);
+ 
 
 export default router;
