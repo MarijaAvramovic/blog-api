@@ -39,9 +39,14 @@ app.get('/', async (req, res) => {
   res.json({ user });
 });
 
+
+app.get('/test-cors', (req, res) => {
+  res.json({ message: 'CORS updated version' });
+});
 app.use('/api/auth', authRouter);
 app.use('/api/posts', postsRouter);
 app.use('/api', commentsRouter);
+
  
 
 const PORT = 4100;
