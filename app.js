@@ -11,16 +11,15 @@ import commentsRouter from './routes/comments.js';
 dotenv.config();
  
 const app = express();
-
 app.use(cors({
-  origin: [
-    'http://localhost:5500',
-    'http://127.0.0.1:5500',
-    'https://marijaavramovic.github.io/blog-public/'
-  ],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  origin: '*',                    // Temporary — allows everything (easy for testing)
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true               // Set to false if you're not using cookies/JWT in headers
 }));
+
+// Optional but recommended for preflight (OPTIONS) requests
+app.options('*', cors());
 
  
 app.use(express.json());
