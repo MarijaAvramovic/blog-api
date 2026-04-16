@@ -1,4 +1,29 @@
 # blog-api 
+
+
+App runs on:
+https://marijaavramovic.github.io/blog-public/
+
+<img src="./blog-pic/public.png">
+
+
+Frontend for Admin runs on:
+https://blog-admin-marijaa.netlify.app/
+ <img src="./blog-pic/admin.png" >
+
+Backend API is running on:
+https://blog-api-wwtw.onrender.com/
+
+
+Separate GitHub repos for each of the three apps:
+
+ Public: https://github.com/MarijaAvramovic/blog-public  
+
+ Admin: https://github.com/MarijaAvramovic/blog-admin  
+
+ API: https://github.com/MarijaAvramovic/blog-api (current)
+
+
 A RESTful API for a blog platform built with Express and Prisma.
 It handles users, posts, and comments with authentication using JWT.
 
