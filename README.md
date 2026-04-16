@@ -16,43 +16,15 @@ Express
 Prisma ORM
 PostgreSQL (or any Prisma-supported DB)
 jsonwebtoken (JWT)
-📦 Models Overview
-User
-username
-role (ADMIN or BASIC)
-Post
-title
-content
-published (true/false)
-createdAt
-Comment
-username (required)
-content
-createdAt
+ 
 🔐 Authentication
 Login returns a JWT
 Client stores token (e.g. localStorage)
 Send token in requests:
 Authorization: Bearer <token>
 Protected routes require a valid token
-📌 API Endpoints (Example)
-Auth
-POST /api/login
-Posts
-GET /api/posts
-POST /api/posts (admin)
-PUT /api/posts/:id (admin)
-DELETE /api/posts/:id (admin)
-PATCH /api/posts/:id/publish
-Comments
-POST /api/comments
-DELETE /api/comments/:id (admin)
-⚙️ Setup
-git clone https://github.com/your-username/blog-api.git
-cd blog-api
-npm install
-▶️ Run Server
-npm run dev
+ 
+ 
 
 
 Used Postman to test endpoints:
