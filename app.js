@@ -19,7 +19,7 @@ app.use(cors({
 }));
 
 // Optional but recommended for preflight (OPTIONS) requests
-app.options('*', cors());
+app.options(/.*/, cors());
 
  
 app.use(express.json());
